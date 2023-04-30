@@ -4,6 +4,14 @@ import BotCollection from "./components/BotCollection";
 import YourBotArmy from "./components/YourBotArmy";
 
 function App() {
+const [bots,setBots] = useState([]);
+
+useEffect(() => {
+  fetch("http://localhost:3000")
+    .then((response) => response.json())
+    .then((data) => setBots(data));
+}, []);
+g
   return (
     <div className="App">
       <header className="App-header">
