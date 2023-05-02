@@ -1,8 +1,9 @@
 import React from "react";
+import Enlistment from "./Enlistment";
 
 
 function BotCollection (props) {
-    const {bots} = props;
+    const {bots, onEnlist} = props;
 
     return(
         <div className="bot-collection">
@@ -13,6 +14,7 @@ function BotCollection (props) {
               <img src={bot.avatar_url} alt={bot.name} />
               <p>{bot.name}</p>
               <p>{bot.special_ability}</p>
+              <Enlistment bot={bot} onEnlist={onEnlist} />
             </li>
           ))}
         </ul>
@@ -21,3 +23,4 @@ function BotCollection (props) {
 }
 
 export default BotCollection;
+

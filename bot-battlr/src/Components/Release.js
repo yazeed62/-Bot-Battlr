@@ -1,13 +1,15 @@
 import React from 'react';
-import axios from 'axios';
 
 function Release(props) {
   const handleDischarge = () => {
-    // Make API call to delete the bot from the server
-    axios.delete(`http://localhost:3000/bots/${props.bot.id}`)
+    
+    fetch(`http://localhost:3000/bots/${props.bot.id}`,{
+    
+    method: 'DELETE'
+  })
       .then((response) => {
         console.log(response);
-        // Remove the bot from the YourBotArmy component on the frontend
+        
         props.onDischarge(props.bot.id);
       })
       .catch((error) => {
@@ -24,4 +26,3 @@ function Release(props) {
 }
 
 export default Release;
-git

@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 
 function Enlistment({ bot, onEnlist }) {
-  const [enlistedBots, setEnlistedBots] = useState([]);
+  const [enlistedBots, setEnlistedBots] = useState(false);
 
-  const handleEnlist = (bot) => {
-    if (!enlistedBots.includes(bot)) {
-      setEnlistedBots([...enlistedBots, bot]);
+  const handleEnlist = () => {
+    if (!enlistedBots) {
+      setEnlistedBots(true);
       onEnlist(bot);
     }
   };
 
   return (
     <div>
-      <button onClick={() => handleEnlist(bot)}>Enlist</button>
+         {enlistedBots ? (
+        <button disabled>Enlisted</button>
+      ) : (
+      <button onClick={handleEnlist}>Enlist</button>
+      )}
     </div>
   );
 }
